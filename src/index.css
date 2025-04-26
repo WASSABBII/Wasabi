@@ -1,0 +1,91 @@
+/* index.css — Old Money Style */
+
+body {
+  margin: 0rem;
+  font-family: 'Georgia', serif;
+  background-color: #383735;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+/* Центровка заголовков */
+.centered {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Заголовок h1 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1e1e1e;
+  margin-top: 2rem;
+}
+
+/* Подзаголовок h3 */
+h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+/* Общий контейнер */
+section {
+  padding: 2rem 1rem;
+}
+
+/* Кнопки (если нужны) */
+button {
+  background-color: #e0dfd5;
+  border: 1px solid #b4b2a8;
+  padding: 0.6rem 1.2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d1d0c6;
+}
+
+/* Ссылки */
+a {
+  color: #2c2c2c;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+}
+
+a:hover {
+  border-color: #999;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+}
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.3em;
+  color: #333;
+}
+
+.control {
+  
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 40%;
+  margin-bottom: 1rem;
+  
+}
