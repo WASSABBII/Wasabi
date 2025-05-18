@@ -1,68 +1,42 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useLocation, useNavigate } from "react-router-dom";
+import { Link as ScrollLink, scroller } from "react-scroll";
+import { Link } from "react-router-dom";
+import "./Header.css";
 
-const HeaderContainer = styled.header`
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: linear-gradient(to right, rgb(47, 45, 45), #f0f0f0);
-  width: 95%;
-  margin: 10px auto;
-  padding: 15px 20px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-`;
 
-const Brand = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
-`;
+export default function Header() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const NavButtons = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`;
-
-const NavButton = styled.button`
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  color: #555;
-  cursor: pointer;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #0077ff;
-  }
-`;
-
-const Time = styled.div`
-  font-size: 14px;
-  color: #888;
-`;
-
-export default function Header({ onChange }) {
-  const [now, setNow] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleScrollTo = (section) => {
+    if (location.pathname !== "/main") {
+      navigate("/main");
+      // Подождать пока загрузится страница, потом скролл
+      setTimeout(() => {
+        scroller.scrollTo(section, {
+          smooth: true,
+          duration: 500,
+          offset: -70,
+        });
+      }, 100); // немного времени на переход
+    } else {
+      scroller.scrollTo(section, {
+        smooth: true,
+        duration: 500,
+        offset: -70,
+      });
+    }
+  };
 
   return (
-    <HeaderContainer>
-      <Brand>WASABI Diagnostic</Brand>
-      <NavButtons>
-        <NavButton onClick={() => onChange('main')}>Main</NavButton>
-        <NavButton onClick={() => onChange('feedback')}>Feedback</NavButton>
-        <NavButton onClick={() => onChange('effect')}>Effect</NavButton>
-      </NavButtons>
-      <Time>{now.toLocaleTimeString()}</Time>
-    </HeaderContainer>
+    <nav>
+      <h2>WASABI</h2>
+      <div className="link">
+        <button onClick={() => handleScrollTo("main")}>Home</button>
+        <button onClick={() => handleScrollTo("cards")}>info</button>
+        <button onClick={() => handleScrollTo("effect")}>About Us</button>
+        <Link to="/feedback">AI Chat</Link>
+      </div>
+    </nav>
   );
 }

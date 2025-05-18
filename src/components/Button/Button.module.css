@@ -1,14 +1,4 @@
-.button {
-  background-color: #e0dfd5;
-  border: 1px solid #b4b2a8;
-  padding: 0.6rem 1.2rem;
-  font-family: inherit;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin: 0 10px; /* добавим отступ слева и справа */
-}
+
 
 .button:hover {
   opacity: 0.8;
